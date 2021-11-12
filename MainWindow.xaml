@@ -11,10 +11,19 @@
     mc:Ignorable="d">
     <Grid>
         <StackPanel Margin="10">
-            <TextBox x:Name="nametextBox" Margin="0,0,0,5" />
-            <TextBox x:Name="emailtextBox" Margin="0,0,0,5" />
+            <Label Content="Name" />
+            <TextBox x:Name="nametextBox" Margin="0,0,0,0" />
+
+            <Label Content="Email" />
+            <TextBox x:Name="emailtextBox" Margin="0,0,0,0" />
+
+            <Label Content="Phone" />
             <TextBox x:Name="phonetextBox" Margin="0,0,0,5" />
-            <Button x:Name="saveButton" Content="Save" Click="saveButton_Click"/>
+
+            <Button
+                x:Name="saveButton"
+                Click="saveButton_Click"
+                Content="Save" />
         </StackPanel>
     </Grid>
 </Window>
