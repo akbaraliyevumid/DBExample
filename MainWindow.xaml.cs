@@ -29,6 +29,10 @@ namespace ContactsApp
         public MainWindow()
         {
             InitializeComponent();
+
+            //****unlock in order to show the base automatically****//
+            //contacts = new List<Contact>();
+            //ReadDB();
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
@@ -43,7 +47,7 @@ namespace ContactsApp
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
                 connection.CreateTable<Contact>();
-                connection.Insert(contacts);
+                connection.Insert(contact);
             }
 
             Close();
