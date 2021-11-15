@@ -1,6 +1,9 @@
-﻿using SQLite;
+﻿using Microsoft.Data.Sqlite;
+//using System.Data.SQLite;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +24,8 @@ namespace ContactsApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Contact> contacts;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,10 +43,29 @@ namespace ContactsApp
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
                 connection.CreateTable<Contact>();
-                connection.Insert(contact);
+                connection.Insert(contacts);
             }
 
             Close();
+        }
+
+        private void loadBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ReadDB();
+        }
+
+        void ReadDB()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            {
+                connection.CreateTable<Contact>();
+                contacts = (connection.Table<Contact>().ToList()).OrderBy(c => c.Name).ToList();
+            }
+
+            if (contacts != null)
+            {
+                listView.ItemsSource = contacts;
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ContactsApp
 
         public override string ToString()
         {
-            return $"{Name} - {Email} - {Phone}";
+            return $"{Id} - {Name} - {Email} - {Phone}";
         }
     }
 }
